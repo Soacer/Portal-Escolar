@@ -128,42 +128,35 @@ return [
     */
 
     'menu' => [
-        ['header' => 'Funcionalidades'],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Cadastrar',
+            'icon'    => 'fa fa-address-book',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text'    => 'Alunos',
+                    'icon'    => 'fa fa-address-book',
+                    'url'     => '/cadastrar/alunos',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text'    => 'Docentes',
+                    'icon'    => 'fa fa-address-book',
+                    'url'     => '/cadastrar/docentes',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Visualizar',
+            'icon'    => 'fa fa-address-book',
+            'submenu' => [
+                [
+                    'text'    => 'Alunos',
+                    'icon'    => 'fa fa-address-book',
+                    'url'     => '/mostrar/alunos',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text'    => 'Docentes',
+                    'icon'    => 'fa fa-address-book',
+                    'url'     => '/mostrar/docentes',
                 ],
             ],
         ],
