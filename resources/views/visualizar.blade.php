@@ -16,27 +16,27 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Número de Matrícula</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                @foreach($users as $user)
+                    <tr>
+                        <td>{{$user['nome']}}</td>
+                        <td>{{$user['email']}}</td>
+                        <td>{{$user['numero_matricula']}}</td>
+                        <td>
+                            <a href="" class="btn btn-danger"><i class="fa fa-user-times"></i>  Deletar Aluno</a>
+                        </td>
+                        <td>
+                            <a href="" class="btn btn-success"><i class="fa fa-user-plus"></i> Editar Dados Cadastrais</a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     @endcan

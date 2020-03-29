@@ -33,7 +33,7 @@ class AlunoController extends Controller
             'user_id' => $user->id, //Insere o ID de user na tabela Aluno
         ]);
         
-        $this->show();
+        return view('home');
     }
 
     public function show()
@@ -42,9 +42,19 @@ class AlunoController extends Controller
         //é preciso fazer um foreach e inseri-los numa outra array
         foreach($alunos as $aluno){
             $discentes[] = $aluno; 
+            $usuarios = User::all();
+            foreach($usuarios as $usuario){
+                if($usuario->id == $aluno->user_id){
+                    $users[] = [
+                        'id' => $aluno->id, 
+                        'numero_matricula' => $aluno->numero_matricula, 
+                        'nome' => $usuario->name, 
+                        'email' => $usuario->email
+                    ];
+                }
+            }
         }
-        dd($discentes);
-
-        redirect()->view('visualizar', compact('alunos'));
+        $selecao = 'alunos';
+        return view('visualizar', compact('selecao', 'users'));
     }
 }

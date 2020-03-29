@@ -130,32 +130,32 @@ return [
     'menu' => [
         [
             'text'    => 'Cadastrar',
-            'icon'    => 'fa fa-address-book',
+            'icon'    => 'fa fa-user-plus',
             'submenu' => [
                 [
-                    'text'    => 'Alunos',
-                    'icon'    => 'fa fa-address-book',
+                    'text'    => 'Matrícula de Alunos',
+                    'icon'    => 'fas fa-user-graduate',
                     'url'     => '/cadastrar/alunos',
                 ],
                 [
-                    'text'    => 'Docentes',
-                    'icon'    => 'fa fa-address-book',
+                    'text'    => 'Cadastro de Docentes',
+                    'icon'    => 'fas fa-chalkboard-teacher',
                     'url'     => '/cadastrar/docentes',
                 ],
             ],
         ],
         [
             'text'    => 'Visualizar',
-            'icon'    => 'fa fa-address-book',
+            'icon'    => 'fas fa-eye',
             'submenu' => [
                 [
                     'text'    => 'Alunos',
-                    'icon'    => 'fa fa-address-book',
+                    'icon'    => 'fas fa-user-graduate',
                     'url'     => '/mostrar/alunos',
                 ],
                 [
                     'text'    => 'Docentes',
-                    'icon'    => 'fa fa-address-book',
+                    'icon'    => 'fas fa-chalkboard-teacher',
                     'url'     => '/mostrar/docentes',
                 ],
             ],
