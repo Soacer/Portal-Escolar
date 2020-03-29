@@ -13,31 +13,41 @@
 
 @section('content')
     @can('Diretor')
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Número de Matrícula</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($users as $user)
+        @if($alunos != null)
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>{{$user['nome']}}</td>
-                        <td>{{$user['email']}}</td>
-                        <td>{{$user['numero_matricula']}}</td>
-                        <td>
-                            <a href="" class="btn btn-danger"><i class="fa fa-user-times"></i>  Deletar Aluno</a>
-                        </td>
-                        <td>
-                            <a href="" class="btn btn-success"><i class="fa fa-user-plus"></i> Editar Dados Cadastrais</a>
-                        </td>
+                        <th scope="col">Nome</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Número de Matrícula</th>
+                        <th></th>
+                        <th></th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach($alunos as $aluno)
+                        <tr>
+                            <td>{{$aluno['nome']}}</td>
+                            <td>{{$aluno['email']}}</td>
+                            <td>{{$aluno['numero_matricula']}}</td>
+                            <td>
+                                <form action="{{route('deletar_aluno', $aluno['id'])}}" method="POST">
+                                    @method('DELETE')
+                                    {{csrf_field()}}
+                                    <button type="submit" class="btn btn-danger"><i class="fa fa-user-times"></i>  Deletar Aluno</button>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="{{route('editar_aluno', $aluno['id'] ?? '')}}" class="btn btn-success"><i class="fa fa-user-plus"></i> Editar Dados Cadastrais</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+        <div class="alert alert-danger" role="alert">
+            <i class="fas fa-user-times"></i>  Não existem alunos cadastrados
+        </div>
+        @endif
     @endcan
 @stop

@@ -33,28 +33,69 @@ class AlunoController extends Controller
             'user_id' => $user->id, //Insere o ID de user na tabela Aluno
         ]);
         
-        return view('home');
+        return $this->show();
     }
 
     public function show()
     {
-        $alunos = Aluno::all(); //retorna tudo, ou seja, várias arrays, para "pegar os dados" 
+        $discentes = Aluno::all(); //retorna tudo, ou seja, várias arrays, para "pegar os dados" 
         //é preciso fazer um foreach e inseri-los numa outra array
-        foreach($alunos as $aluno){
-            $discentes[] = $aluno; 
+        foreach($discentes as $discente){
             $usuarios = User::all();
             foreach($usuarios as $usuario){
-                if($usuario->id == $aluno->user_id){
-                    $users[] = [
-                        'id' => $aluno->id, 
-                        'numero_matricula' => $aluno->numero_matricula, 
-                        'nome' => $usuario->name, 
-                        'email' => $usuario->email
+                if($usuario->id == $discente->user_id){
+                    $alunos[] = [
+                        'id'                => $discente->id, 
+                        'numero_matricula'  => $discente->numero_matricula, 
+                        'nome'              => $usuario->name, 
+                        'email'             => $usuario->email
                     ];
                 }
             }
         }
+        if(empty($alunos)){
+            $alunos = null; //Se o banco estiver limpo, essa array vazia garantirá a exibição da tela
+        }
         $selecao = 'alunos';
-        return view('visualizar', compact('selecao', 'users'));
+        return view('visualizar', compact('selecao', 'alunos'));
+    }
+
+    public function delete($id)
+    {
+        $user_id = Aluno::find($id)->user_id;
+
+        Aluno::find($id)->delete();
+        User::find($user_id)->delete();
+
+        return $this->show();
+    }
+
+    public function update(Request $req ,$id)
+    {
+        $data = $req->all();
+
+        $user_id = Aluno::find($id)->user_id;
+
+        $update_aluno = Aluno::find($id);
+        $update_user = User::find($user_id);
+        
+        if(isset($data['nome'])){
+            $update_user->name = $data['nome'];
+            $update_user->save();
+        }
+        if(isset($data['email'])){
+            $update_user->email = $data['email'];
+            $update_user->save();
+        }
+        if(isset($data['matricula']) && $data['matricula'] != 2020){
+            if(strlen($data['matricula']) == 14){ 
+                $update_aluno->numero_matricula = $data['matricula'];
+                $update_aluno->save();
+            }else{
+                return redirect()->route('editar_aluno', $id);
+            }
+        }
+
+        return $this->show();
     }
 }
