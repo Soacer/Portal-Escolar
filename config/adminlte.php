@@ -128,42 +128,35 @@ return [
     */
 
     'menu' => [
-        ['header' => 'Funcionalidades'],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Cadastrar',
+            'icon'    => 'fa fa-user-plus',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text'    => 'Matrícula de Alunos',
+                    'icon'    => 'fas fa-user-graduate',
+                    'url'     => '/cadastrar/alunos',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text'    => 'Cadastro de Docentes',
+                    'icon'    => 'fas fa-chalkboard-teacher',
+                    'url'     => '/cadastrar/docentes',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Visualizar',
+            'icon'    => 'fas fa-eye',
+            'submenu' => [
+                [
+                    'text'    => 'Alunos',
+                    'icon'    => 'fas fa-user-graduate',
+                    'url'     => '/mostrar/alunos',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text'    => 'Docentes',
+                    'icon'    => 'fas fa-chalkboard-teacher',
+                    'url'     => '/mostrar/docentes',
                 ],
             ],
         ],
