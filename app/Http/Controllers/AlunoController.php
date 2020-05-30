@@ -29,7 +29,7 @@ class AlunoController extends Controller
                     ->first();
 
         Aluno::create([ //Cria o "Aluno"
-            'numero_matricula'  => date("Y", strtotime(now())).time(),
+            'numero_matricula'  => date("Y", strtotime(now())).time(), //O número de matricula é uma fusão entre o numero gerado pela data atual juntamente com a hora exata que ele foi criado
             'user_id' => $user->id, //Insere o ID de user na tabela Aluno
         ]);
         
@@ -88,7 +88,7 @@ class AlunoController extends Controller
             $update_user->save();
         }
         if(isset($data['matricula']) && $data['matricula'] != 2020){
-            if(strlen($data['matricula']) == 14){ 
+            if(strlen($data['matricula']) == 14){ //Verifica se o número de matrícula é um número de 14 digitos
                 $update_aluno->numero_matricula = $data['matricula'];
                 $update_aluno->save();
             }else{
@@ -97,5 +97,11 @@ class AlunoController extends Controller
         }
 
         return $this->show();
+    }
+
+    public static function quantidade()
+    {
+        $quantidade = Aluno::all()->count();
+        return $quantidade;
     }
 }
