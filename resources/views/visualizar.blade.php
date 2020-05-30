@@ -13,6 +13,7 @@
 
 @section('content')
     @can('Diretor')
+    @if($selecao == 'alunos')
         @if($alunos != null)
             <table class="table">
                 <thead>
@@ -49,5 +50,43 @@
             <i class="fas fa-user-times"></i>  Não existem alunos cadastrados
         </div>
         @endif
+    @endif
+     <!-- Professores -->
+    @if($selecao == 'docentes')
+        @if($professores != null)
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">E-mail</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($professores as $professor)
+                        <tr>
+                            <td>{{$professor['nome']}}</td>
+                            <td>{{$professor['email']}}</td>
+                            <td>
+                                <form action="{{route('deletar_docentes', $professor['id'])}}" method="POST">
+                                    @method('DELETE')
+                                    {{csrf_field()}}
+                                    <button type="submit" class="btn btn-danger"><i class="fa fa-user-times"></i>  Deletar Professor</button>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="{{route('editar_docentes', $professor['id'] ?? '')}}" class="btn btn-success"><i class="fa fa-user-plus"></i> Editar Dados Cadastrais</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+        <div class="alert alert-danger" role="alert">
+            <i class="fas fa-user-times"></i>  Não existem professores cadastrados
+        </div>
+        @endif
+    @endif
     @endcan
 @stop

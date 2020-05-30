@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 use App\User;
 use App\Aluno;
@@ -21,7 +22,7 @@ class AlunoController extends Controller
         User::create([ //Insere as Informações no Banco Usando o Eloquent
             'name'      =>  $data['nome'],
             'email'     =>  $data['email'],
-            'password'  =>  'aluno123',
+            'password'  =>  Hash::make('aluno123'),
         ]);
 
         $user = User::where('name', $data['nome']) //Faz um select aonde o nome for igual ao nome digitado

@@ -39,3 +39,12 @@ Route::post('/cadastrar/aluno/salvar', ['as' => 'salvar_aluno', 'uses' => 'Aluno
 
 //Professores
 Route::get('/cadastrar/docentes', ['as' => 'cadastrar_docentes', 'uses' => 'ProfessorController@index'])->middleware('auth');
+Route::post('/cadastrar/docentes/salvar', ['as' => 'salvar_docentes', 'uses' => 'ProfessorController@create'])->middleware('auth');
+Route::get('/mostrar/docentes', ['as' => 'mostrar_docentes', 'uses' => 'ProfessorController@show'])->middleware('auth');
+Route::delete('/mostrar/docentes/{id}', ['as' => 'deletar_docentes', 'uses' => 'ProfessorController@delete'])->middleware('auth');
+Route::put('/mostrar/docentes/{id}', ['as' => 'atualizar_docentes', 'uses' => 'ProfessorController@update'])->middleware('auth');
+
+Route::get('/mostrar/docentes/editar/{id}', ['as' => 'editar_docentes', function($id){
+    $selecao = 'docentes';
+    return view('editar', compact('id', 'selecao'));
+}])->middleware('auth');
