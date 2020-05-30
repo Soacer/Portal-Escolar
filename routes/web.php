@@ -48,3 +48,8 @@ Route::get('/mostrar/docentes/editar/{id}', ['as' => 'editar_docentes', function
     $selecao = 'docentes';
     return view('editar', compact('id', 'selecao'));
 }])->middleware('auth');
+
+//Materias
+Route::get('/cadastrar/materias', ['as' => 'cadastrar_materias', 'uses' => 'MateriaController@index'])->middleware('auth');
+
+
