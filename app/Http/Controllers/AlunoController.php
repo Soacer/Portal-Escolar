@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Hash;
 
 use App\User;
 use App\Aluno;
+use App\roles_user;
+use Illuminate\Support\Facades\Hash;
+
 class AlunoController extends Controller
 {
     //
@@ -34,6 +37,11 @@ class AlunoController extends Controller
             'user_id' => $user->id, //Insere o ID de user na tabela Aluno
         ]);
         
+        roles_user::create([
+            'user_id'   => $user->id,
+            'roles_id'  => '4' 
+        ]);
+
         return $this->show();
     }
 

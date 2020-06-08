@@ -19,7 +19,7 @@
     </div>
     @endcan
     @can('Aluno')
-        Aluno
+        <h1>Entrou</h1>
     @endcan
     @can('Coordenador')
         Coordenador
