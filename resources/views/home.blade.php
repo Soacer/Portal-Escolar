@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Página Principal')
 
 @section('content_header')
     
@@ -8,16 +8,15 @@
 
 @section('content')
     @can('Diretor')
-        <div class="info-box">
-            <!-- Apply any bg-* class to to the icon to color it -->
-            <span class="info-box-icon bg-red"><i class="fa fa-star"></i></span>
-            <div class="info-box-content">
-                <span class="info-box-text">Likes</span>
-                <span class="info-box-number">93,139</span>
-            </div>
-            <!-- /.info-box-content -->
+    <div class="info-box">
+        <!-- Apply any bg-* class to to the icon to color it -->
+        <span class="info-box-icon bg-blue"><i class="fas fa-user-graduate"></i></span>
+        <div class="info-box-content">
+            <span>Quantidade de Alunos</span>
+            <span class="info-box-number">{{App\Http\Controllers\AlunoController::quantidade()}}</span>
         </div>
-        <!-- /.info-box -->
+        <!-- /.info-box-content -->
+    </div>
     @endcan
     @can('Aluno')
         Aluno
