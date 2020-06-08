@@ -129,6 +129,29 @@ return [
 
     'menu' => [
         [
+            'can'     => 'Aluno',
+            'text'    => 'Matérias',
+            'icon'    => 'fa fa-book',
+            'submenu' => [
+                [
+                    'text'    => 'Presença',
+                    'icon'    => 'fas fa-user-graduate',
+                    'url'     => '#',
+                ],
+                [
+                    'text'    => 'Boletim',
+                    'icon'    => 'fa fa-check',
+                    'url'     => '#',
+                ],
+                [
+                    'text'    => 'Trabalhos e Atividades',
+                    'icon'    => 'fa fa-clone',
+                    'url'     => '#',
+                ],
+            ],
+        ],
+        [
+            'can'     => 'Diretor',
             'text'    => 'Cadastrar',
             'icon'    => 'fa fa-user-plus',
             'submenu' => [
@@ -145,6 +168,7 @@ return [
             ],
         ],
         [
+            'can'     => 'Diretor',
             'text'    => 'Visualizar',
             'icon'    => 'fas fa-eye',
             'submenu' => [

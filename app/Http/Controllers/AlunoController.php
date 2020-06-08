@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\Aluno;
+use App\roles_user;
+use Illuminate\Support\Facades\Hash;
+
 class AlunoController extends Controller
 {
     //
@@ -21,7 +24,7 @@ class AlunoController extends Controller
         User::create([ //Insere as Informações no Banco Usando o Eloquent
             'name'      =>  $data['nome'],
             'email'     =>  $data['email'],
-            'password'  =>  'aluno123',
+            'password'  =>  Hash::make('aluno123'),
         ]);
 
         $user = User::where('name', $data['nome']) //Faz um select aonde o nome for igual ao nome digitado
@@ -33,6 +36,11 @@ class AlunoController extends Controller
             'user_id' => $user->id, //Insere o ID de user na tabela Aluno
         ]);
         
+        roles_user::create([
+            'user_id'   => $user->id,
+            'roles_id'  => '4' 
+        ]);
+
         return $this->show();
     }
 
